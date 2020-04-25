@@ -7,11 +7,11 @@ export const useRegister = () => {
     const dispatch = useDispatch();
 
     const register = useCallback(credentials => {
-        dispatch({type: authTypes.AUTH_REGISTER_START});
+        dispatch({type: authTypes.AUTH_LOGIN_START});
         axios().post('/api/registration', credentials).then(res => {
             console.log(res.data);
-            dispatch({type: authTypes.AUTH_REGISTER_SUCCESS, payload: res.data.key})
-        }).catch(err => dispatch({type: authTypes.AUTH_REGISTER_FAILURE, payload: err.response}))
+            dispatch({type: authTypes.AUTH_LOGIN_SUCCESS, payload: res.data.key})
+        }).catch(err => dispatch({type: authTypes.AUTH_LOGIN_FAILURE, payload: err.response}))
     }, [dispatch]);
 
     return [register]
