@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import {useForm} from "../../hooks/useForm";
 import {ActionsContext} from "../../contexts/ActionsContext";
+import AuthForm from "./AuthForm";
 
 const loginState = {
     username: '',
@@ -29,28 +30,12 @@ function Auth() {
     }, [loc.pathname]);
 
     function doSubmit() {
-        if (loc.pathname === '/login') {
-            actions.auth.login(values);
-        } else {
-            actions.auth.register(values);
-        }
+        loc.pathname === '/login' ? actions.auth.login(values) : actions.auth.register(values);
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                {Object.keys(values).map((key, i) => (
-                    <div key={i} className={'nes-field'}>
-                        <label
-                            htmlFor={key}>{key === 'username' ? 'Username' : key === 'password2' ? 'Confirm Password' : 'Password'}</label>
-                        <input type={key === 'username' ? 'text' : 'password'} id={key} name={key} value={values[key]}
-                               onChange={handleChange}/>
-                    </div>
-                ))}
-                <button type="button" onClick={handleReset} className="nes-btn">Reset</button>
-                <button type="submit" className="nes-btn is-primary">{loc.pathname === '/login' ? 'Login' : 'Register'}</button>
-            </form>
-        </div>
+        <AuthForm handleChange={handleChange} values={values} handleReset={handleReset} handleSubmit={handleSubmit}
+                  pathname={loc.pathname}/>
     )
 }
 
