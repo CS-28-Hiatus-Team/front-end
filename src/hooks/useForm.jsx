@@ -12,5 +12,5 @@ export const useForm = (initialState, cb) => {
 
     const handleReset = () => setValues(initialState);
 
-    return [values, handleChange, handleSubmit, handleReset]
+    return [values, handleChange, handleSubmit, handleReset, setValues]
 };
