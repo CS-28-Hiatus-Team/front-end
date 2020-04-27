@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Message from "./Message";
 import Pusher from "pusher-js";
 import axios from "axios";
@@ -70,6 +70,7 @@ function Chat() {
             onChange={handleChange}
             name="text"
             value={chatState.text}
+            placeholder="enter a message!"
           />
         </div>
       </form>
