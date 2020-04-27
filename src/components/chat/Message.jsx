@@ -11,7 +11,7 @@ function Message({direction, message}) {
             <div className={`nes-balloon from-${direction}`}>
                 <p>{message}</p>
             </div>
-            {direction === 'right' && <i className="nes-bcrikko" />}
+            {direction === 'right' && <i className="nes-mario" />}
         </section>
     )
 }
