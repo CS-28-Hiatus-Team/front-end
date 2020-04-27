@@ -16,6 +16,8 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
           CI: true
+          REACT_APP_PUSHER_APP_KEY: ${{ secrets.PusherAppKey }}
+          REACT_APP_PUSHER_APP_CLUSTER: ${{ secrets.PusherAppCluster }}
         with:
           coverageCommand: yarn coverage
           debug: true
