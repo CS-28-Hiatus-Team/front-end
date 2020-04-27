@@ -16,10 +16,10 @@ const setRooms = (rooms) => {
 const setRoomMap = async (rooms) => {
     const roomSet = await setRooms(rooms)
     return rooms.map((room, id) => {
-        const north = room.north && findRoom(roomSet, room.north);
-        const south = room.south && findRoom(roomSet, room.south);
-        const east = room.east && findRoom(roomSet, room.east);
-        const west = room.west && findRoom(roomSet, room.west);
+        const north = findRoom(roomSet, room.north);
+        const south = findRoom(roomSet, room.south);
+        const east = findRoom(roomSet, room.east);
+        const west = findRoom(roomSet, room.west);
         return new RoomMap(room, north, south, east, west)
     });
 }
