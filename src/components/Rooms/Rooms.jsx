@@ -8,11 +8,11 @@ function Rooms() {
     const actions = useContext(ActionsContext);
     const {rooms} = useSelector(state => state.room);
 
-    useEffect(()=> {
+    useEffect(() => {
         if (rooms.length === 0) {
             actions.rooms.getLocalData();
         }
-    }, [rooms])
+    }, [rooms, actions.rooms]);
 
     return <h1>Rooms</h1>
 }

@@ -22,11 +22,12 @@ export class RoomMap {
 }
 
 export function findRoom(rooms, name) {
+    console.log(rooms);
     // Base Case
     if (rooms.length === 0) {
         return null;
     }
-    if (rooms.name === name) {
+    if (rooms[0].name === name) {
         return rooms[0]
     }
     rooms.shift();
