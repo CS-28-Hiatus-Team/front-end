@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import MainView from "./mainView/MainView";
 import Chat from './chat/Chat';
 import { useActions } from '../store/useActions';
 import { ActionsProvider } from '../contexts/ActionsContext';
