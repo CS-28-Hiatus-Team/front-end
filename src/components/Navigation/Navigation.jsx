@@ -1,33 +1,42 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
-import styled from "styled-components";
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 const navLinks = [
-    {
-        name: 'Home',
-        link: '/'
-    },
-    {
-        name: 'Login',
-        link: '/login',
-    },
-    {
-        name: 'Register',
-        link: '/register'
-    }
+  {
+    name: 'Home',
+    link: '/',
+  },
+  {
+    name: 'Login',
+    link: '/login',
+  },
+  {
+    name: 'Register',
+    link: '/register',
+  },
 ];
 
 const Nav = styled.nav`
   display: flex;
   justify-content: space-evenly;
+  background-color: #151826;
+`;
+
+const StyledLink = styled(NavLink)`
+  color: white;
 `;
 
 function Navigation() {
-    return (
-        <Nav className="nes-container is-centered">
-            {navLinks.map((link, i)=> <NavLink to={link.link} className="nes-text is-primary">{link.name}</NavLink>)}
-        </Nav>
-    )
+  return (
+    <Nav className='nes-container is-centered'>
+      {navLinks.map((link, i) => (
+        <StyledLink to={link.link} className='navText'>
+          {link.name}
+        </StyledLink>
+      ))}
+    </Nav>
+  );
 }
 
 export default Navigation;
