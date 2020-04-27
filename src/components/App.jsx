@@ -5,6 +5,7 @@ import {useActions} from "../store/useActions";
 import {ActionsProvider} from "../contexts/ActionsContext";
 import Navigation from "./Navigation/Navigation";
 import Auth from "./auth/Auth";
+import Rooms from "./Rooms/Rooms";
 
 function App() {
     const actions = useActions();
@@ -20,6 +21,7 @@ function App() {
                 <p>Why Hello There. A MUD is coming soon</p>
             </div>
             <Chat/>
+            <Rooms/>
         </ActionsProvider>
     )
 }
