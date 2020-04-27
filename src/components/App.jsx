@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import MainView from './mainView/MainView';
 import { useActions } from '../store/useActions';
 import { ActionsProvider } from '../contexts/ActionsContext';
 import Navigation from './Navigation/Navigation';
 import Auth from './auth/Auth';
-import MainView from './mainView/MainView';
 
 function App() {
   const actions = useActions();
