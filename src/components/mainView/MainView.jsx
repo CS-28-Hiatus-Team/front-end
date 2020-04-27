@@ -1,12 +1,14 @@
 import React from "react";
-import Chat from "../chat/Chat";
+import Chat from "./chat/Chat";
+import MainMap from "./mainMap/MainMap";
+import MiniMap from "./miniMap/MiniMap";
 
 function MainView() {
   return (
     <div>
-      {/* <MiniMap /> */}
+      <MiniMap />
       <Chat />
-      {/* <MainMap /> */}
+      <MainMap />
     </div>
   );
 }

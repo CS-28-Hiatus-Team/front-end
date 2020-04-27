@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import Chat from "./chat/Chat";
+
+// import "materialize-css/dist/css/materialize.min.css";
+// import M from "materialize-css/dist/js/materialize.min.js";
+
 import MainView from "./mainView/MainView";
 import { useActions } from "../store/useActions";
 import { ActionsProvider } from "../contexts/ActionsContext";
@@ -8,6 +11,11 @@ import Navigation from "./Navigation/Navigation";
 import Auth from "./auth/Auth";
 
 function App() {
+  //   useEffect(() => {
+  //     //auto initializes Materialize's JS
+  //     M.AutoInit();
+  //   }, []);
+
   const actions = useActions();
   return (
     <ActionsProvider value={actions}>
@@ -21,7 +29,6 @@ function App() {
         <p>Why Hello There. A MUD is coming soon</p>
       </div>
       <MainView />
-      {/* <Chat/> */}
     </ActionsProvider>
   );
 }
