@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { ActionsContext } from '../../contexts/ActionsContext';
 import AuthForm from './AuthForm';
-import background from '../../assets/background.png';
+import background from '../../assets/images/background.png';
 
 import styled, { keyframes } from 'styled-components';
 
