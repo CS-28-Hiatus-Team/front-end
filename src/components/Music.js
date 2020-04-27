@@ -19,7 +19,7 @@ const useAudio = () => {
   const [audio] = useState(new Audio(backgroundSound));
   const [playing, setPlaying] = useState(false);
 
-  audio.volume = 0.2;
+  audio.volume = 0.1;
 
   const toggle = () => setPlaying(!playing);
 
