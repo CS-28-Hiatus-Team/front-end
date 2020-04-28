@@ -1,12 +1,24 @@
-import React, { useState, useEffect } from "react";
-import Message from "./Message";
-import Pusher from "pusher-js";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import Message from './Message';
+import Pusher from 'pusher-js';
+import axios from 'axios';
+
+import styled from 'styled-components';
+
+const MessageContainer = styled.div`
+  height: 85%;
+  width: 100%;
+  overflow-y: scroll;
+`;
+
+const TextArea = styled.input`
+  height: 15px;
+`;
 
 function Chat() {
   const [chatState, setChatState] = useState({
-    text: "",
-    username: "",
+    text: '',
+    username: '',
     chats: [],
   });
 
@@ -18,20 +30,20 @@ function Chat() {
       cluster: process.env.REACT_APP_PUSHER_APP_CLUSTER,
       encrypted: true,
     });
-    const channel = pusher.subscribe("chat");
-    channel.bind("message", (data) => {
+    const channel = pusher.subscribe('chat');
+    channel.bind('message', (data) => {
       const newChats = chatState.chats;
       newChats.push(data);
-      setChatState({ ...chatState, chats: newChats, text: "" });
+      setChatState({ ...chatState, chats: newChats, text: '' });
     });
     return () => {
-      channel.unsubscribe("chat");
+      channel.unsubscribe('chat');
     };
   }, []);
 
   console.log(chatState);
   const handleChange = ({ target: { name, value } }) => {
-    console.log("called");
+    console.log('called');
     setChatState({ ...chatState, [name]: value });
   };
 
@@ -46,31 +58,30 @@ function Chat() {
 
   return (
     <>
-      <section className="nes-container">
-        <section className="message-list">
+      <MessageContainer className='nes-container'>
+        <section className='message-list'>
           {chatState.chats.map((message, i) => (
             <Message
               {...message}
               direction={
-                chatState.username === message.username ? "right" : "left"
+                chatState.username === message.username ? 'right' : 'left'
               }
               key={i}
             />
           ))}
         </section>
-      </section>
+      </MessageContainer>
 
       <form onSubmit={handleSubmit}>
-        <div className="nes-field">
-          <label htmlFor="message_field">Message</label>
-          <input
-            type="text"
-            id="message_field"
-            className="nes-input"
+        <div className='nes-field'>
+          <TextArea
+            type='text'
+            id='message_field'
+            className='nes-input'
             onChange={handleChange}
-            name="text"
+            name='text'
             value={chatState.text}
-            placeholder="enter a message!"
+            placeholder='enter a message!'
           />
         </div>
       </form>

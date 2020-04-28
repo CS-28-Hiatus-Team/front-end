@@ -28,9 +28,9 @@ const useAudio = () => {
   }, [playing]);
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
+    audio.addEventListener('ended', () => audio.play());
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
+      audio.removeEventListener('ended', () => audio.play());
     };
   }, []);
 

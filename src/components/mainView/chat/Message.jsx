@@ -1,4 +1,23 @@
-import React from "react";
+import React from 'react';
+import mario from '../../../assets/images/mario.png';
+import bcrikko from '../../../assets/images/bcrikko.png';
+
+import styled from 'styled-components';
+
+const MessageBubble = styled.div`
+  width: 65%;
+`;
+
+const MessageAvatar = styled.img`
+  height: 50px;
+  width: 50px;
+  margin-top: 40px;
+`;
+const MessageFont = styled.p`
+  font-size: 12px;
+  word-wrap: wrap;
+  text-align: center;
+`;
 
 function Message({ direction, message }) {
   // Direction props.direction === "right" or props.direction === "left"
@@ -8,13 +27,13 @@ function Message({ direction, message }) {
   return (
     <section className={`message -${direction}`}>
       {/* this is where we can add the avatar chosen by registering instead of nes-bcrikko or nes-mario */}
-      {direction === "left" && <i className="nes-bcrikko" />}
+      {direction === 'left' && <MessageAvatar src={bcrikko} />}
 
-      <div className={`nes-balloon from-${direction}`}>
-        <p>{message}</p>
-      </div>
+      <MessageBubble className={`nes-balloon from-${direction}`}>
+        <MessageFont>{message}</MessageFont>
+      </MessageBubble>
 
-      {direction === "right" && <i className="nes-mario" />}
+      {direction === 'right' && <MessageAvatar src={mario} />}
     </section>
   );
 }
