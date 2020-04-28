@@ -14,7 +14,6 @@ const MessageAvatar = styled.img`
   margin-top: 50px;
 `;
 const MessageFont = styled.p`
-  font-size: 12px;
   word-wrap: wrap;
   text-align: center;
 `;

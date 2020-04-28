@@ -3,6 +3,8 @@ import Message from './Message';
 import Pusher from 'pusher-js';
 import axios from 'axios';
 import background from '../../../assets/images/background.png';
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
 
 import styled from 'styled-components';
 
@@ -27,7 +29,22 @@ function Chat() {
     text: '',
     username: '',
     chats: [],
+    showEmojis: false,
   });
+
+  const showEmojis = (e) => {
+    setChatState({ ...chatState, showEmojis: true }, () =>
+      document.addEventListener('click', closeMenu)
+    );
+  };
+
+  const closeMenu = (e) => {
+    if (this.emojiPicker !== null && !this.emojiPicker.contains(e.target)) {
+      setChatState({ ...chatState, showEmojis: false }, () =>
+        document.removeEventListener('click', closeMenu)
+      );
+    }
+  };
 
   useEffect(() => {
     const username = `Anonymous ${Math.floor(Math.random() * 10000)}`;
@@ -63,6 +80,11 @@ function Chat() {
     axios.post(`${process.env.REACT_APP_PUSHER_URL}/message`, payload);
   };
 
+  const addEmoji = (e) => {
+    let emoji = e.native;
+    setChatState({ ...chatState, text: `${chatState.text}` + emoji });
+  };
+
   return (
     <MessageContainer>
       <Messages className='nes-container'>
@@ -92,6 +114,13 @@ function Chat() {
           />
         </div>
       </form>
+      {chatState.showEmojis ? (
+        <span>
+          <Picker onSelect={addEmoji} emojiTooltip={true} />
+        </span>
+      ) : (
+        <p onClick={showEmojis}>😀</p>
+      )}
     </MessageContainer>
   );
 }
