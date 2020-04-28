@@ -26,7 +26,8 @@ const MainContainer = styled.section`
   justify-content: space-evenly;
   align-items: center;
   width: 100vw;
-  height: 86vh;
+  height: 84.5vh;
+  margin-top: 5px;
 `;
 
 const LeftContainer = styled.section`
@@ -36,7 +37,6 @@ const LeftContainer = styled.section`
   align-items: center;
   width: 20vw;
   height: 85vh;
-  margin: 5px;
 `;
 
 const LeftTopContainer = styled.section`
@@ -51,7 +51,7 @@ const RightContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 78vw;
+  width: 76vw;
   height: 85vh;
 `;
 
