@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import Music from '../Music';
 
 const navLinks = [
   {
@@ -35,6 +36,7 @@ function Navigation() {
           {link.name}
         </StyledLink>
       ))}
+      <Music />
     </Nav>
   );
 }
