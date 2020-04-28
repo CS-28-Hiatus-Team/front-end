@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Message from './Message';
 import Pusher from 'pusher-js';
 import axios from 'axios';
+import background from '../../../assets/images/background.png';
 
 import styled from 'styled-components';
 
 const MessageContainer = styled.div`
+  background-image: url(${background});
   display: flex;
   flex-direction: column;
   justify-content: center;
