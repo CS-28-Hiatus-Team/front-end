@@ -1,26 +1,20 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Chat from "./chat/Chat";
-import MainMap from "./mainMap/MainMap";
-import MiniMap from "./miniMap/MiniMap";
+import MainMap from './mainMap/MainMap';
+import MiniMap from './miniMap/MiniMap';
 
 function MainView() {
   return (
     <MainContainer>
-      <LeftContainer className="nes-container ">
-        <LeftTopContainer className="nes-container is-rounded">
-          <p class="title">Room </p>
+      <LeftContainer className='nes-container '>
+        <LeftTopContainer>
+          <p class='title'>Room </p>
           <MiniMap />
         </LeftTopContainer>
-
-        <LeftBottomContainer className="nes-container is-rounded">
-          <p class="title">Chat</p>
-          <Chat />
-        </LeftBottomContainer>
       </LeftContainer>
 
-      <RightContainer className="nes-container ">
+      <RightContainer className='nes-container '>
         <MainMap />
       </RightContainer>
     </MainContainer>
@@ -49,11 +43,6 @@ const LeftTopContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 120%;
-  height: 60%;
-`;
-
-const LeftBottomContainer = styled.section`
   width: 120%;
   height: 60%;
 `;

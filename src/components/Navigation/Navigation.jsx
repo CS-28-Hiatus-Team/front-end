@@ -16,6 +16,10 @@ const navLinks = [
     name: 'Register',
     link: '/register',
   },
+  {
+    name: 'Messages',
+    link: '/messages',
+  },
 ];
 
 const Nav = styled.nav`
