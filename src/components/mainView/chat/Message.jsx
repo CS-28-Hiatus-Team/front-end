@@ -5,7 +5,7 @@ import bcrikko from '../../../assets/images/bcrikko.png';
 import styled from 'styled-components';
 
 const MessageBubble = styled.div`
-  width: 60%;
+  width: 65%;
 `;
 
 const MessageAvatar = styled.img`
