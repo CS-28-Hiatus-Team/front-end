@@ -1,10 +1,10 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import MainView from './mainView/MainView';
-import { useActions } from '../store/useActions';
-import { ActionsProvider } from '../contexts/ActionsContext';
-import Navigation from './Navigation/Navigation';
-import Auth from './auth/Auth';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import MainView from "./mainView/MainView";
+import { useActions } from "../store/useActions";
+import { ActionsProvider } from "../contexts/ActionsContext";
+import Navigation from "./Navigation/Navigation";
+import Auth from "./auth/Auth";
 
 function App() {
   const actions = useActions();
@@ -12,14 +12,14 @@ function App() {
     <ActionsProvider value={actions}>
       <Navigation />
       <Switch>
-        <Route path='/login' component={Auth} />
-        <Route path='/register' component={Auth} />
+        <Route path="/login" component={Auth} />
+        <Route path="/register" component={Auth} />
+
+        <Route exact={true} path="/" component={MainView} />
+        {/* this will be protected route tbd */}
       </Switch>
-      <div className='nes-container with-title is-centered'>
-        <p className='title'>Hello World</p>
-        <p>Why Hello There. A MUD is coming soon</p>
-      </div>
-      <MainView />
+
+      {/* <MainView /> */}
     </ActionsProvider>
   );
 }
