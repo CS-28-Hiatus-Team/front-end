@@ -5,13 +5,13 @@ import bcrikko from '../../../assets/images/bcrikko.png';
 import styled from 'styled-components';
 
 const MessageBubble = styled.div`
-  width: 65%;
+  width: 90%;
 `;
 
 const MessageAvatar = styled.img`
   height: 50px;
   width: 50px;
-  margin-top: 40px;
+  margin-top: 50px;
 `;
 const MessageFont = styled.p`
   font-size: 12px;

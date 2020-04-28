@@ -6,13 +6,18 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const MessageContainer = styled.div`
-  height: 85%;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Messages = styled.div`
+  height: 72vh;
   overflow-y: scroll;
 `;
 
 const TextArea = styled.input`
-  height: 15px;
+  height: 100px;
 `;
 
 function Chat() {
@@ -57,8 +62,8 @@ function Chat() {
   };
 
   return (
-    <>
-      <MessageContainer className='nes-container'>
+    <MessageContainer>
+      <Messages className='nes-container'>
         <section className='message-list'>
           {chatState.chats.map((message, i) => (
             <Message
@@ -70,7 +75,7 @@ function Chat() {
             />
           ))}
         </section>
-      </MessageContainer>
+      </Messages>
 
       <form onSubmit={handleSubmit}>
         <div className='nes-field'>
@@ -85,7 +90,7 @@ function Chat() {
           />
         </div>
       </form>
-    </>
+    </MessageContainer>
   );
 }
 
