@@ -62,7 +62,7 @@ const RightContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80vw;
+  width: 78vw;
   height: 85vh;
 `;
 
