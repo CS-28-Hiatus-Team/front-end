@@ -36,6 +36,7 @@ const loginState = {
 
 const registerState = {
   username: '',
+  email: '',
   password1: '',
   password2: '',
 };
