@@ -8,17 +8,19 @@ import MiniMap from "./miniMap/MiniMap";
 function MainView() {
   return (
     <MainContainer>
-      <LeftContainer>
-        <LeftTopContainer>
+      <LeftContainer className="nes-container ">
+        <LeftTopContainer className="nes-container is-rounded">
+          <p class="title">Room </p>
           <MiniMap />
         </LeftTopContainer>
 
-        <LeftBottomContainer>
+        <LeftBottomContainer className="nes-container is-rounded">
+          <p class="title">Chat</p>
           <Chat />
         </LeftBottomContainer>
       </LeftContainer>
 
-      <RightContainer>
+      <RightContainer className="nes-container ">
         <MainMap />
       </RightContainer>
     </MainContainer>
@@ -29,45 +31,39 @@ const MainContainer = styled.section`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
-  height: 81.5vh;
-  border: 1px solid black;
+  width: 100vw;
+  height: 86vh;
 `;
 
 const LeftContainer = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 20%;
-  height: 98%;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+  height: 85vh;
   margin: 5px;
-  border: 1px solid black;
 `;
 
 const LeftTopContainer = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
-  min-height: 50%;
-  border: 1px solid red;
-  margin: 5px, 0px, 0px, 5px;
+  width: 120%;
+  height: 60%;
 `;
 
 const LeftBottomContainer = styled.section`
-  width: 100%;
-  height: 50%;
-  border: 1px solid blue;
-  margin: 5px, 0px, 0px, 5px;
+  width: 120%;
+  height: 60%;
 `;
 
 const RightContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 77%;
-  height: 95%;
-  margin: 5px;
-  border: 1px solid orange;
+  width: 78vw;
+  height: 85vh;
 `;
 
 export default MainView;
