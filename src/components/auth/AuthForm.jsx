@@ -34,12 +34,12 @@ function AuthForm({
           <Label htmlFor={key}>
             {key === 'username'
               ? 'Username'
-              : key === 'password2'
+              : key === 'email' ? 'Email Address' : key === 'password2'
               ? 'Confirm Password'
               : 'Password'}
           </Label>
           <Input
-            type={key === 'username' ? 'text' : 'password'}
+            type={key === 'username' ? 'text' : key === 'email' ? 'email' : 'password'}
             id={key}
             name={key}
             value={values[key]}
