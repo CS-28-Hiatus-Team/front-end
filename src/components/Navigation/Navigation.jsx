@@ -35,20 +35,14 @@ const StyledLink = styled(NavLink)`
 function Navigation() {
   return (
     <Nav className='nes-container is-centered'>
-      {navLinks.map((link, i) =>
-        `${link.name}` === 'Messages' ? (
-          <div class='nes-badge is-icon'>
-            <span class='is-warning'>1</span>
-            <StyledLink to={link.link} className='navText'>
-              {link.name}
-            </StyledLink>
-          </div>
-        ) : (
+      {navLinks.map((link, i) => (
+        <div class={`${link.name}` === 'Messages' ? 'nes-badge is-icon' : null}>
+          <span class='is-warning'>1</span>
           <StyledLink to={link.link} className='navText'>
             {link.name}
           </StyledLink>
-        )
-      )}
+        </div>
+      ))}
       <Music />
     </Nav>
   );
