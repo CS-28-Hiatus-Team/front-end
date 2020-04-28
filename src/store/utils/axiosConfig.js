@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'https://lambda-mud-test.herokuapp.com';
+const baseUrl = process.env.REACT_APP_BACKEND_API;
 
 export const axiosWithoutAuth = () => axios.create({
     baseURL: baseUrl
