@@ -5,6 +5,7 @@ import { useActions } from '../store/useActions';
 import { ActionsProvider } from '../contexts/ActionsContext';
 import Navigation from './Navigation/Navigation';
 import Auth from './auth/Auth';
+import Chat from '../components/mainView/chat/Chat';
 
 function App() {
   const actions = useActions();
@@ -14,12 +15,13 @@ function App() {
       <Switch>
         <Route path='/login' component={Auth} />
         <Route path='/register' component={Auth} />
+        <Route path='/messages' component={Chat} />
+
+        <Route exact={true} path='/' component={MainView} />
+        {/* this will be protected route tbd */}
       </Switch>
-      <div className='nes-container with-title is-centered'>
-        <p className='title'>Hello World</p>
-        <p>Why Hello There. A MUD is coming soon</p>
-      </div>
-      <MainView />
+
+      {/* <MainView /> */}
     </ActionsProvider>
   );
 }

@@ -16,6 +16,10 @@ const navLinks = [
     name: 'Register',
     link: '/register',
   },
+  {
+    name: 'Messages',
+    link: '/messages',
+  },
 ];
 
 const Nav = styled.nav`
@@ -32,9 +36,12 @@ function Navigation() {
   return (
     <Nav className='nes-container is-centered'>
       {navLinks.map((link, i) => (
-        <StyledLink to={link.link} className='navText'>
-          {link.name}
-        </StyledLink>
+        <div class={`${link.name}` === 'Messages' ? 'nes-badge is-icon' : null}>
+          <span class='is-warning'>1</span>
+          <StyledLink to={link.link} className='navText'>
+            {link.name}
+          </StyledLink>
+        </div>
       ))}
       <Music />
     </Nav>
