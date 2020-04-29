@@ -40,5 +40,8 @@ export default createReducer(initialState, {
     [types.GET_PLAYERS_FAILURE]: gameFailure,
     [types.INITIALIZE_PLAYER_START]: gameStart,
     [types.INITIALIZE_PLAYER_SUCCESS]: currentRoomSuccess,
-    [types.INITIALIZE_PLAYER_FAILURE]: gameFailure
+    [types.INITIALIZE_PLAYER_FAILURE]: gameFailure,
+    [types.MOVE_PLAYER_START]: gameStart,
+    [types.MOVE_PLAYER_SUCCESS]: currentRoomSuccess,
+    [types.MOVE_PLAYER_FAILURE]: gameFailure
 })
