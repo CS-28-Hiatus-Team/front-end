@@ -1,10 +1,10 @@
 import React from "react";
-import Player from "./features/player/index";
-import Map from "./features/map/index";
-import GameInfo from "../mainMap/features/GameInfo/index";
+import Player from "../player";
+import Map from "../map";
+import GameInfo from "../GameInfo/index.js";
 
-import { tiles } from "./data/maps/1";
-import store from "./config/store";
+// import { tiles } from '../../data/maps/1'
+// import store from '../../config/store'
 
 const styles = {
   container: {
@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-const MainMap = (props) => {
+const World = (props) => {
   return (
     <container style={styles.container}>
       <div
@@ -39,4 +39,4 @@ const MainMap = (props) => {
   );
 };
 
-export default MainMap;
+export default World;

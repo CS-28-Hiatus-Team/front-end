@@ -1,30 +1,30 @@
-import React, {useContext, useEffect} from 'react';
-import styled from 'styled-components';
+import React, { useContext, useEffect } from "react";
+import styled from "styled-components";
 
-import MainMap from './mainMap/MainMap';
-import MiniMap from './miniMap/MiniMap';
-import {useSelector} from "react-redux";
-import {ActionsContext} from "../../contexts/ActionsContext";
+import MainMap from "./mainMap/MainMap";
+import MiniMap from "./gameInfo/GameInfo";
+import { useSelector } from "react-redux";
+import { ActionsContext } from "../../contexts/ActionsContext";
 
 function MainView() {
-    const {token} = useSelector(state => state.auth);
-    const actions = useContext(ActionsContext);
-    useEffect(()=> {
-        if (token) {
-            actions.game.getRooms(token);
-            actions.game.getPlayers(token);
-        }
-    }, [token])
+  const { token } = useSelector((state) => state.auth);
+  const actions = useContext(ActionsContext);
+  useEffect(() => {
+    if (token) {
+      actions.game.getRooms(token);
+      actions.game.getPlayers(token);
+    }
+  }, [token]);
   return (
     <MainContainer>
-      <LeftContainer className='nes-container '>
+      <LeftContainer className="nes-container ">
         <LeftTopContainer>
-          <p className='title'>Room </p>
+          <p className="title">Room </p>
           <MiniMap />
         </LeftTopContainer>
       </LeftContainer>
 
-      <RightContainer className='nes-container '>
+      <RightContainer className="nes-container ">
         <MainMap />
       </RightContainer>
     </MainContainer>
@@ -36,7 +36,7 @@ const MainContainer = styled.section`
   justify-content: space-evenly;
   align-items: center;
   width: 100vw;
-  height: 84.5vh;
+  height: 83vh;
   margin-top: 5px;
 `;
 
@@ -46,7 +46,7 @@ const LeftContainer = styled.section`
   justify-content: center;
   align-items: center;
   width: 20vw;
-  height: 85vh;
+  height: 82vh;
 `;
 
 const LeftTopContainer = styled.section`
@@ -62,7 +62,7 @@ const RightContainer = styled.section`
   justify-content: center;
   align-items: center;
   width: 76vw;
-  height: 85vh;
+  height: 82vh;
 `;
 
 export default MainView;

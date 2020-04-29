@@ -1,0 +1,23 @@
+.tile {
+    display: inline-flex;
+    background-color: hsl(120, 22%, 35%);
+}
+
+.rock {
+    background-image: url('/tiles/rock.png');
+}
+
+.tree {
+    background-image: url('/tiles/tree.png');
+    background-blend-mode: multiply;
+}
+
+.grass {
+    background-color: hsl(120, 22%, 35%);
+}
+
+.door {
+    background-image: url('/tiles/door.png');
+}
+
+
