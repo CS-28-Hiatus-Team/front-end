@@ -1,15 +1,15 @@
 import {useCallback} from 'react';
 import {useDispatch} from "react-redux";
 import * as types from './roomTypes';
-import axios from 'axios';
+import {axiosWithAuth as axios} from "../utils/axiosConfig";
 
 export const useRoomActions = () => {
     const dispatch = useDispatch();
 
-    const getLocalData = useCallback(()=> {
+    const getLocalData = useCallback(token => {
         dispatch({type: types.GET_ROOMS_START})
-        axios
-            .get('http://localhost:3333/rooms')
+        axios(token)
+            .get('/api/rooms/')
             .then(res => {
                 dispatch({type: types.GET_ROOMS_SUCCESS, payload: res.data})
             })
