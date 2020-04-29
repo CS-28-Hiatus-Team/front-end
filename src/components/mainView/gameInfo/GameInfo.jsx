@@ -8,13 +8,13 @@ const styles = {
 };
 
 const GameInfo = (props) => {
-  const currentRoom = useSelector((state) => state.player.currentRoom);
+  //   const currentRoom = useSelector((state) => state.player.currentRoom);
 
-  console.log(currentRoom);
+  //   console.log(currentRoom);
   return (
     <div style={styles.text}>
-      <h1>You're in {currentRoom.name}!</h1>
-      <p>{currentRoom.desc}</p>
+      {/* <h1>You're in {currentRoom.name}!</h1>
+      <p>{currentRoom.desc}</p> */}
     </div>
   );
 };

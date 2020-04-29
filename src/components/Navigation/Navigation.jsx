@@ -1,38 +1,38 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import Music from '../Music';
-import {useSelector} from "react-redux";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import Music from "../Music";
+import { useSelector } from "react-redux";
 
 const navLoginLinks = [
   {
-    name: 'Home',
-    link: '/',
+    name: "Home",
+    link: "/",
   },
   {
-    name: 'Login',
-    link: '/login',
+    name: "Login",
+    link: "/login",
   },
   {
-    name: 'Register',
-    link: '/register',
+    name: "Register",
+    link: "/register",
   },
 ];
 
 const navLogoutLinks = [
   {
-    name: 'Home',
-    link: '/'
+    name: "Home",
+    link: "/",
   },
   {
-    name: 'Messages',
-    link: '/messages'
+    name: "Messages",
+    link: "/messages",
   },
   {
-    name: 'Logout',
-    link: '/logout'
+    name: "Logout",
+    link: "/logout",
   },
-]
+];
 
 const Nav = styled.nav`
   display: flex;
@@ -45,14 +45,17 @@ const StyledLink = styled(NavLink)`
 `;
 
 function Navigation() {
-  const {token} = useSelector(state => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const navLinks = token ? navLogoutLinks : navLoginLinks;
   return (
-    <Nav className='nes-container is-centered'>
+    <Nav className="nes-container is-centered">
       {navLinks.map((link, i) => (
-        <div className={`${link.name}` === 'Messages' ? 'nes-badge is-icon' : null} key={i}>
-          <span className='is-warning'>1</span>
-          <StyledLink to={link.link} className='navText'>
+        <div
+          className={`${link.name}` === "Messages" ? "nes-badge is-icon" : null}
+          key={i}
+        >
+          <span className="is-warning">1</span>
+          <StyledLink to={link.link} className="navText">
             {link.name}
           </StyledLink>
         </div>

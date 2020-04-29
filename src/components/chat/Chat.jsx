@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Message from './Message';
-import Pusher from 'pusher-js';
-import axios from 'axios';
-import background from '../../../assets/images/background.png';
-import 'emoji-mart/css/emoji-mart.css';
-import { Picker } from 'emoji-mart';
-import emojiAdd from '../../../assets/images/emoji.png';
+import React, { useState, useEffect } from "react";
+import Message from "./Message";
+import Pusher from "pusher-js";
+import axios from "axios";
+import background from "../../assets/images/background.png";
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
+import emojiAdd from "../../assets/images/emoji.png";
 
-import styled from 'styled-components';
-import {useSelector} from "react-redux";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const MessageContainer = styled.div`
   background-image: url(${background});
@@ -60,9 +60,9 @@ const Form = styled.div`
 `;
 
 function Chat() {
-  const {user} = useSelector(state => state.user)
+  const { user } = useSelector((state) => state.user);
   const [chatState, setChatState] = useState({
-    text: '',
+    text: "",
     username: user.username,
     chats: [],
     showEmojis: false,
@@ -70,14 +70,14 @@ function Chat() {
 
   const showEmojis = (e) => {
     setChatState({ ...chatState, showEmojis: true }, () =>
-      document.addEventListener('click', closeMenu)
+      document.addEventListener("click", closeMenu)
     );
   };
 
   const closeMenu = (e) => {
     if (this.emojiPicker !== null && !this.emojiPicker.contains(e.target)) {
       setChatState({ ...chatState, showEmojis: false }, () =>
-        document.removeEventListener('click', closeMenu)
+        document.removeEventListener("click", closeMenu)
       );
     }
   };
@@ -87,14 +87,14 @@ function Chat() {
       cluster: process.env.REACT_APP_PUSHER_APP_CLUSTER,
       encrypted: true,
     });
-    const channel = pusher.subscribe('chat');
-    channel.bind('message', (data) => {
+    const channel = pusher.subscribe("chat");
+    channel.bind("message", (data) => {
       const newChats = chatState.chats;
       newChats.push(data);
-      setChatState({ ...chatState, chats: newChats, text: '' });
+      setChatState({ ...chatState, chats: newChats, text: "" });
     });
     return () => {
-      channel.unsubscribe('chat');
+      channel.unsubscribe("chat");
     };
   }, []);
 
@@ -123,12 +123,12 @@ function Chat() {
   return (
     <MessageContainer>
       <Messages>
-        <section className='message-list'>
+        <section className="message-list">
           {chatState.chats.map((message, i) => (
             <Message
               {...message}
               direction={
-                chatState.username === message.username ? 'right' : 'left'
+                chatState.username === message.username ? "right" : "left"
               }
               key={i}
             />
@@ -137,15 +137,15 @@ function Chat() {
       </Messages>
       <Form>
         <form onSubmit={handleSubmit}>
-          <div className='nes-field'>
+          <div className="nes-field">
             <TextArea
-              type='text'
-              id='message_field'
-              className='nes-input'
+              type="text"
+              id="message_field"
+              className="nes-input"
               onChange={handleChange}
-              name='text'
+              name="text"
               value={chatState.text}
-              placeholder='enter a message!'
+              placeholder="enter a message!"
             />
           </div>
         </form>
