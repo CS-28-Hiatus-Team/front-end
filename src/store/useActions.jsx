@@ -1,5 +1,5 @@
 import {useAuthActions} from "./auth/useAuthActions";
-import {useRoomActions} from "./room/useRoomActions";
+import {useRoomActions} from "./game/useRoomActions";
 
 export const useActions = () => {
     const auth = useAuthActions();

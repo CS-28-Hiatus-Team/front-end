@@ -4,7 +4,6 @@ import {findRoom, Room, RoomMap} from "../../utils/rooms";
 
 const initialState = {
     rooms: [],
-    roomMap: [],
     isLoading: false,
     errors: null
 };
@@ -25,7 +24,7 @@ const setRoomMap = async (rooms) => {
 }
 
 export const roomStart = (state, payload) => ({...state, isLoading: true, errors: null});
-export const roomSuccess = (state, payload) => ({...state, isLoading: false, rooms: setRooms(payload), roomMap: setRoomMap(payload)});
+export const roomSuccess = (state, payload) => ({...state, isLoading: false, rooms: payload});
 export const roomFailure = (state, payload) => ({...state, isLoading: false, errors: payload});
 
 export default createReducer(initialState, {

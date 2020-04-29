@@ -6,7 +6,7 @@ import {axiosWithAuth as axios} from "../utils/axiosConfig";
 export const useRoomActions = () => {
     const dispatch = useDispatch();
 
-    const getLocalData = useCallback(token => {
+    const getRooms = useCallback(token => {
         dispatch({type: types.GET_ROOMS_START})
         axios(token)
             .get('/api/rooms/')
@@ -18,5 +18,5 @@ export const useRoomActions = () => {
             });
     }, [dispatch])
 
-    return {getLocalData}
+    return {getRooms}
 }
