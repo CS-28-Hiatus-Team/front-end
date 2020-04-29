@@ -1,7 +1,7 @@
-import {useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {useDispatch} from "react-redux";
-import * as types from './roomTypes';
-import {axiosWithAuth as axios} from "../utils/axiosConfig";
+import * as types from "../gameTypes";
+import {axiosWithAuth as axios} from "../../utils/axiosConfig";
 
 export const useRoomActions = () => {
     const dispatch = useDispatch();
@@ -18,5 +18,5 @@ export const useRoomActions = () => {
             });
     }, [dispatch])
 
-    return {getRooms}
+    return [getRooms]
 }

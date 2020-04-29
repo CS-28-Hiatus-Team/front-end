@@ -1,9 +1,9 @@
 import {useAuthActions} from "./auth/useAuthActions";
-import {useRoomActions} from "./game/useRoomActions";
+import {useGameActions} from "./game/useGameActions";
 
 export const useActions = () => {
     const auth = useAuthActions();
-    const rooms = useRoomActions();
+    const game = useGameActions();
 
-    return {auth, rooms}
+    return {auth, game}
 };

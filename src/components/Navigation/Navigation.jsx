@@ -36,7 +36,7 @@ function Navigation() {
   return (
     <Nav className='nes-container is-centered'>
       {navLinks.map((link, i) => (
-        <div className={`${link.name}` === 'Messages' ? 'nes-badge is-icon' : null}>
+        <div className={`${link.name}` === 'Messages' ? 'nes-badge is-icon' : null} key={i}>
           <span className='is-warning'>1</span>
           <StyledLink to={link.link} className='navText'>
             {link.name}

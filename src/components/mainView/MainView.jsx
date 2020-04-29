@@ -11,14 +11,15 @@ function MainView() {
     const actions = useContext(ActionsContext);
     useEffect(()=> {
         if (token) {
-            actions.rooms.getRooms(token);
+            actions.game.getRooms(token);
+            actions.game.getPlayers(token);
         }
     }, [token])
   return (
     <MainContainer>
       <LeftContainer className='nes-container '>
         <LeftTopContainer>
-          <p class='title'>Room </p>
+          <p className='title'>Room </p>
           <MiniMap />
         </LeftTopContainer>
       </LeftContainer>
