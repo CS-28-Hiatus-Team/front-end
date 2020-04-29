@@ -6,6 +6,7 @@ import AuthForm from './AuthForm';
 import background from '../../assets/images/background.png';
 
 import styled, { keyframes } from 'styled-components';
+import {useSelector} from "react-redux";
 
 const backgroundAnimation = keyframes`
 from{background-position: 0, 0}
@@ -41,7 +42,8 @@ const registerState = {
   password2: '',
 };
 
-function Auth() {
+function Auth({history: {push}}) {
+  const {token} = useSelector(state => state.auth);
   const actions = useContext(ActionsContext);
   const loc = useLocation();
   const initialState = loc.pathname === '/login' ? loginState : registerState;
@@ -49,6 +51,12 @@ function Auth() {
     initialState,
     doSubmit
   );
+
+  useEffect(()=> {
+    if (token) {
+      push('/');
+    }
+  }, [token])
 
   useEffect(() => {
     if (loc.pathname === '/login') {

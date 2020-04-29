@@ -5,10 +5,10 @@ export const axiosWithoutAuth = () => axios.create({
     baseURL: baseUrl
 })
 
-export const axiosWithAuth = key => axios.create({
+export const axiosWithAuth = token => axios.create({
     baseURL: baseUrl,
     headers: {
-        'Authorization': `Token ${key}`,
+        'Authorization': `Token ${token}`,
         'Content-Type': 'application/json'
     }
 });

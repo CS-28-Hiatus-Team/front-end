@@ -2,14 +2,14 @@ import authTypes from "./authTypes";
 import {createReducer} from "../utils/createReducer";
 
 const initialState = {
-    key: null,
+    token: null,
     isLoading: false,
     errors: null
 };
 
-const authStart = (state, payload) => ({...state, isLoading: true});
+const authStart = (state, payload) => ({...state, isLoading: true, errors: null});
 
-const authSuccess = (state, payload) => ({...state, isLoading: false, key: payload});
+const authSuccess = (state, payload) => ({...state, isLoading: false, token: payload, errors: null});
 
 const authFailure = (state, payload) => ({...state, isLoading: false, errors: payload});
 
