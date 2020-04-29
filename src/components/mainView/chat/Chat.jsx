@@ -8,6 +8,7 @@ import { Picker } from 'emoji-mart';
 import emojiAdd from '../../../assets/images/emoji.png';
 
 import styled from 'styled-components';
+import {useSelector} from "react-redux";
 
 const MessageContainer = styled.div`
   background-image: url(${background});
@@ -59,9 +60,10 @@ const Form = styled.div`
 `;
 
 function Chat() {
+  const {user} = useSelector(state => state.user)
   const [chatState, setChatState] = useState({
     text: '',
-    username: '',
+    username: user.username,
     chats: [],
     showEmojis: false,
   });
@@ -81,9 +83,6 @@ function Chat() {
   };
 
   useEffect(() => {
-    const username = `Anonymous ${Math.floor(Math.random() * 10000)}`;
-    console.log(username);
-    setChatState({ ...chatState, username });
     const pusher = new Pusher(process.env.REACT_APP_PUSHER_APP_KEY, {
       cluster: process.env.REACT_APP_PUSHER_APP_CLUSTER,
       encrypted: true,
