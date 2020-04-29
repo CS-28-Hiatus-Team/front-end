@@ -2,8 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Music from '../Music';
+import {useSelector} from "react-redux";
 
-const navLinks = [
+const navLoginLinks = [
   {
     name: 'Home',
     link: '/',
@@ -16,11 +17,22 @@ const navLinks = [
     name: 'Register',
     link: '/register',
   },
+];
+
+const navLogoutLinks = [
+  {
+    name: 'Home',
+    link: '/'
+  },
   {
     name: 'Messages',
-    link: '/messages',
+    link: '/messages'
   },
-];
+  {
+    name: 'Logout',
+    link: '/logout'
+  },
+]
 
 const Nav = styled.nav`
   display: flex;
@@ -33,6 +45,8 @@ const StyledLink = styled(NavLink)`
 `;
 
 function Navigation() {
+  const {token} = useSelector(state => state.auth);
+  const navLinks = token ? navLogoutLinks : navLoginLinks;
   return (
     <Nav className='nes-container is-centered'>
       {navLinks.map((link, i) => (

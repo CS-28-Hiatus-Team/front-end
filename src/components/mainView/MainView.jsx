@@ -13,6 +13,7 @@ function MainView() {
     if (token) {
       actions.game.getRooms(token);
       actions.game.getPlayers(token);
+      actions.user.getUser(token);
     }
   }, [token]);
   return (

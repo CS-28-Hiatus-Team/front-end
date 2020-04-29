@@ -5,8 +5,9 @@ import { useActions } from "../store/useActions";
 import { ActionsProvider } from "../contexts/ActionsContext";
 import Navigation from "./Navigation/Navigation";
 import Auth from "./auth/Auth";
-import Chat from "../components/mainView/chat/Chat";
+import Chat from "../components/chat/Chat";
 import PrivateRoute from "./auth/PrivateRoute";
+import Logout from "./auth/Logout";
 
 function App() {
   const actions = useActions();
@@ -16,9 +17,10 @@ function App() {
       <Switch>
         <Route path="/login" component={Auth} />
         <Route path="/register" component={Auth} />
-        <PrivateRoute path="/messages" component={Chat} />
-
+        <Route path="/messages" component={Chat} />
+        <PrivateRoute path="/logout" component={Logout} />
         <Route exact={true} path="/" component={MainView} />
+        {/* this will be protected route tbd */}
       </Switch>
 
       {/* <MainView /> */}

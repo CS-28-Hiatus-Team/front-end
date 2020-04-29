@@ -13,11 +13,14 @@ const authSuccess = (state, payload) => ({...state, isLoading: false, token: pay
 
 const authFailure = (state, payload) => ({...state, isLoading: false, errors: payload});
 
+const authLogout = () => initialState;
+
 export default createReducer(initialState, {
     [authTypes.AUTH_LOGIN_START]: authStart,
     [authTypes.AUTH_LOGIN_SUCCESS]: authSuccess,
     [authTypes.AUTH_LOGIN_FAILURE]: authFailure,
     [authTypes.AUTH_REGISTER_START]: authStart,
     [authTypes.AUTH_REGISTER_SUCCESS]: authSuccess,
-    [authTypes.AUTH_REGISTER_FAILURE]: authFailure
+    [authTypes.AUTH_REGISTER_FAILURE]: authFailure,
+    [authTypes.LOGOUT]: authLogout
 })
