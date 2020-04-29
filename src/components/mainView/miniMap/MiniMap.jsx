@@ -1,11 +1,13 @@
-import React from "react";
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function MiniMap() {
+  const currentRoom = useSelector((state) => state.game.currentRoom);
+
   return (
     <div>
-      <p>
-        this will be something like a mini map or where room descriptions go?
-      </p>
+      <h1>{currentRoom.title}</h1>
+      <p>{currentRoom.description}</p>
     </div>
   );
 }

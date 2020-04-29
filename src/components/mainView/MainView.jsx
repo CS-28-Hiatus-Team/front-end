@@ -1,25 +1,24 @@
-import React, {useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 
 import MainMap from './mainMap/MainMap';
 import MiniMap from './miniMap/MiniMap';
-import {useSelector} from "react-redux";
-import {ActionsContext} from "../../contexts/ActionsContext";
+import { useSelector } from 'react-redux';
+import { ActionsContext } from '../../contexts/ActionsContext';
 
 function MainView() {
-    const {token} = useSelector(state => state.auth);
-    const actions = useContext(ActionsContext);
-    useEffect(()=> {
-        if (token) {
-            actions.game.init(token);
-            actions.game.move(token, 'n');
-        }
-    }, [token])
+  const { token } = useSelector((state) => state.auth);
+  const actions = useContext(ActionsContext);
+  useEffect(() => {
+    if (token) {
+      actions.game.init(token);
+      actions.game.move(token, 'n');
+    }
+  }, [token]);
   return (
     <MainContainer>
       <LeftContainer className='nes-container '>
         <LeftTopContainer>
-          <p className='title'>Room </p>
           <MiniMap />
         </LeftTopContainer>
       </LeftContainer>
