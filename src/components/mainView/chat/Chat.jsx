@@ -5,23 +5,57 @@ import axios from 'axios';
 import background from '../../../assets/images/background.png';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
+import emojiAdd from '../../../assets/images/emoji.png';
 
 import styled from 'styled-components';
 
 const MessageContainer = styled.div`
   background-image: url(${background});
+  background-repeat-y: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  height: 90vh;
 `;
 
 const Messages = styled.div`
-  height: 72vh;
+  height: 90%;
   overflow-y: scroll;
+  margin-top: -10;
 `;
 
 const TextArea = styled.input`
-  height: 100px;
+  height: 60px;
+  width: 100%;
+  margin: 10px 10px 10px 0;
+`;
+
+const GetEmojiButton = styled.p`
+  font-size: 40px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  margin-top: -5px;
+`;
+
+const EmojiPicker = styled.span`
+  position: absolute;
+  right: 0;
+  margin-right: 60%;
+  cssfloat: right;
+  bottom: 100px;
+`;
+
+const EmojiAddImg = styled.img`
+  height: 35px;
+  width: 45px;
+`;
+const Form = styled.div`
+  display: flex;
+  width: 95%;
+  margin: 0px 0px 0px 10px;
 `;
 
 function Chat() {
@@ -82,12 +116,16 @@ function Chat() {
 
   const addEmoji = (e) => {
     let emoji = e.native;
-    setChatState({ ...chatState, text: `${chatState.text}` + emoji });
+    setChatState({
+      ...chatState,
+      text: `${chatState.text}` + emoji,
+      showEmojis: false,
+    });
   };
 
   return (
     <MessageContainer>
-      <Messages className='nes-container'>
+      <Messages>
         <section className='message-list'>
           {chatState.chats.map((message, i) => (
             <Message
@@ -100,27 +138,30 @@ function Chat() {
           ))}
         </section>
       </Messages>
-
-      <form onSubmit={handleSubmit}>
-        <div className='nes-field'>
-          <TextArea
-            type='text'
-            id='message_field'
-            className='nes-input'
-            onChange={handleChange}
-            name='text'
-            value={chatState.text}
-            placeholder='enter a message!'
-          />
-        </div>
-      </form>
-      {chatState.showEmojis ? (
-        <span>
-          <Picker onSelect={addEmoji} emojiTooltip={true} />
-        </span>
-      ) : (
-        <p onClick={showEmojis}>😀</p>
-      )}
+      <Form>
+        <form onSubmit={handleSubmit}>
+          <div className='nes-field'>
+            <TextArea
+              type='text'
+              id='message_field'
+              className='nes-input'
+              onChange={handleChange}
+              name='text'
+              value={chatState.text}
+              placeholder='enter a message!'
+            />
+          </div>
+        </form>
+        {chatState.showEmojis ? (
+          <EmojiPicker>
+            <Picker onSelect={addEmoji} emojiTooltip={true} />
+          </EmojiPicker>
+        ) : (
+          <GetEmojiButton onClick={showEmojis}>
+            <EmojiAddImg src={emojiAdd} />
+          </GetEmojiButton>
+        )}
+      </Form>
     </MessageContainer>
   );
 }
