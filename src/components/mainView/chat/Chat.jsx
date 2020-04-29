@@ -98,9 +98,7 @@ function Chat() {
     };
   }, []);
 
-  console.log(chatState);
   const handleChange = ({ target: { name, value } }) => {
-    console.log('called');
     setChatState({ ...chatState, [name]: value });
   };
 
