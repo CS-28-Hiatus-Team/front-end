@@ -11,6 +11,8 @@ export const useMoves = () => {
      *  Move Action for Player Movemnt
      *  @param String token --- Authentication Token, located in the store at state.auth.token
      *  @param String direction --- One letter direction movement, 'n', 's', 'e', 'w'
+     *
+     *  Use in a component, bring Actions in on Context, then call the action with actions.game.move(token, 'n')
      */
     const move = useCallback((token, direction) => {
         dispatch({type: types.MOVE_PLAYER_START});
