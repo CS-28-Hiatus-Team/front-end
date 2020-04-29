@@ -11,9 +11,7 @@ function MainView() {
     const actions = useContext(ActionsContext);
     useEffect(()=> {
         if (token) {
-            actions.game.getRooms(token);
-            actions.game.getPlayers(token);
-            actions.user.getUser(token);
+            actions.game.init(token);
         }
     }, [token])
   return (
