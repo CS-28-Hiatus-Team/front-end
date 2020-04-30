@@ -1,0 +1,21 @@
+.tile {
+  display: inline-flex;
+  background-color: transparent;
+}
+
+.rock {
+  background-image: 🥦;
+}
+
+.tree {
+  background-image: 🔥;
+  background-blend-mode: multiply;
+}
+
+.grass {
+  background-color: transparent;
+}
+
+.door {
+  background-image: 🤣;
+}

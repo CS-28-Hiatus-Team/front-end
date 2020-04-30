@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-
+import mapBackground from '../../assets/images/map-background.png';
 import MainMap from './mainMap/MainMap';
 import MiniMap from './miniMap/MiniMap';
 import { useSelector } from 'react-redux';
@@ -13,6 +13,7 @@ function MainView() {
     if (token) {
       actions.game.init(token);
       actions.game.move(token, 'n');
+      actions.game.getRooms(token);
     }
   }, [token]);
   return (
@@ -57,11 +58,16 @@ const LeftTopContainer = styled.section`
 `;
 
 const RightContainer = styled.section`
+  background-image: url(${mapBackground});
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 76vw;
   height: 85vh;
+  padding: 0;
 `;
 
 export default MainView;
