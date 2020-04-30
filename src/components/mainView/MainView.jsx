@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import mapBackground from '../../assets/images/map-background.png';
+import background from '../../assets/images/background.png';
 import MainMap from './mainMap/MainMap';
 import MiniMap from './miniMap/MiniMap';
 import { useSelector } from 'react-redux';
@@ -18,7 +19,7 @@ function MainView() {
   }, [token]);
   return (
     <MainContainer>
-      <LeftContainer className='nes-container '>
+      <LeftContainer>
         <LeftTopContainer>
           <MiniMap />
         </LeftTopContainer>
@@ -32,15 +33,19 @@ function MainView() {
 }
 
 const MainContainer = styled.section`
+  background-image: url(${background});
+  background-position: center;
+  background-repeat-y: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100vw;
   height: 84.5vh;
-  margin-top: 5px;
 `;
 
 const LeftContainer = styled.section`
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,21 +58,16 @@ const LeftTopContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 120%;
   height: 60%;
 `;
 
 const RightContainer = styled.section`
   background-image: url(${mapBackground});
-  background-repeat: no-repeat;
-  position: relative;
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 76vw;
-  height: 85vh;
-  padding: 0;
+  width: 800px;
+  height: 400px;
 `;
 
 export default MainView;
