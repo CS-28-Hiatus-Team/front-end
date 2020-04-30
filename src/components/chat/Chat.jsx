@@ -60,10 +60,10 @@ const Form = styled.div`
 `;
 
 function Chat() {
-  const { user } = useSelector((state) => state.user);
+  const { name } = useSelector((state) => state.game.currentRoom);
   const [chatState, setChatState] = useState({
     text: "",
-    username: user.username,
+    username: name,
     chats: [],
     showEmojis: false,
   });

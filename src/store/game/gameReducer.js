@@ -5,6 +5,7 @@ import {findRoom, Room, RoomMap} from "../../utils/rooms";
 const initialState = {
     rooms: {},
     players: {},
+    currentRoom: {},
     isLoading: false,
     errors: null
 };
@@ -24,10 +25,11 @@ const setRoomMap = async (rooms) => {
     });
 }
 
-export const gameStart = (state, payload) => ({...state, isLoading: true, errors: null});
-export const playersSuccess = (state, payload) => ({...state, isLoading: false, players: payload})
-export const roomSuccess = (state, payload) => ({...state, isLoading: false, rooms: payload});
-export const gameFailure = (state, payload) => ({...state, isLoading: false, errors: payload});
+const gameStart = (state, payload) => ({...state, isLoading: true, errors: null});
+const currentRoomSuccess = (state, payload) => ({...state, isLoading: false, currentRoom: payload})
+const playersSuccess = (state, payload) => ({...state, isLoading: false, players: payload})
+const roomSuccess = (state, payload) => ({...state, isLoading: false, rooms: payload});
+const gameFailure = (state, payload) => ({...state, isLoading: false, errors: payload});
 
 export default createReducer(initialState, {
     [types.GET_ROOMS_START]: gameStart,
@@ -35,5 +37,11 @@ export default createReducer(initialState, {
     [types.GET_ROOMS_FAILURE]: gameFailure,
     [types.GET_PLAYERS_START]: gameStart,
     [types.GET_PLAYERS_SUCCESS]: playersSuccess,
-    [types.GET_PLAYERS_FAILURE]: gameFailure
+    [types.GET_PLAYERS_FAILURE]: gameFailure,
+    [types.INITIALIZE_PLAYER_START]: gameStart,
+    [types.INITIALIZE_PLAYER_SUCCESS]: currentRoomSuccess,
+    [types.INITIALIZE_PLAYER_FAILURE]: gameFailure,
+    [types.MOVE_PLAYER_START]: gameStart,
+    [types.MOVE_PLAYER_SUCCESS]: currentRoomSuccess,
+    [types.MOVE_PLAYER_FAILURE]: gameFailure
 })
