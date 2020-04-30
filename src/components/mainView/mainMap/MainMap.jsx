@@ -13,7 +13,8 @@ const Main = styled.section`
 
 const ButtonContainer = styled.div`
   display: flex;
-  margin-top: 50%;
+  margin-right: -35px;
+  margin-top: -49%;
 `;
 
 const Button = styled.button`
