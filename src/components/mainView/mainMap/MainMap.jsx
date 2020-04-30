@@ -4,7 +4,6 @@ import { ActionsContext } from '../../../contexts/ActionsContext';
 import styled from 'styled-components';
 import walkSprite from '../../../assets/images/image.png';
 import { MAP_WIDTH, MAP_HEIGHT } from '../../../assets/constants';
-import { useKey } from '../../../hooks/useKey';
 
 const Main = styled.section`
   height: 100%;
@@ -18,27 +17,6 @@ function MainMap(key) {
   const [playerPosition, setPlayerPosition] = useState({
     position: [360, 160],
   });
-  const [pressed, setPressed] = useState(false);
-
-  // Event handlers
-  const onDown = (event) => {
-    setPressed(true);
-    moveToNewRoom(handleKeyDown(event));
-  };
-
-  const onUp = (event) => {
-    setPressed(false);
-  };
-
-  // Bind and unbind events
-  useEffect(() => {
-    window.addEventListener('keydown', onDown);
-    window.addEventListener('keyup', onUp);
-    return () => {
-      window.removeEventListener('keydown', onDown);
-      window.removeEventListener('keyup', onUp);
-    };
-  }, [key]);
 
   const getNewPosition = (oldPos, direction) => {
     switch (direction) {
@@ -51,13 +29,6 @@ function MainMap(key) {
       case 's':
         return [oldPos[0], oldPos[1] + 100];
     }
-  };
-
-  const move = (direction, newPos) => {
-    setPlayerPosition({
-      position: newPos,
-    });
-    console.log('PLAYER POSITION', playerPosition.position);
   };
 
   const observedBoundries = (oldPos, newPos) => {
@@ -73,34 +44,39 @@ function MainMap(key) {
     const oldPos = playerPosition.position;
     const newPos = getNewPosition(oldPos, direction);
     if (observedBoundries(oldPos, newPos)) {
-      move(direction, newPos);
+      setPlayerPosition({
+        position: newPos,
+      });
     } else {
       actions.game.move(token, direction);
     }
   }
 
-  const handleKeyDown = (e) => {
+  const handleNorth = (e, direction) => {
     e.preventDefault();
-
-    switch (e.keyCode) {
-      case 37:
-        return 'w';
-
-      case 38:
-        return 'n';
-
-      case 39:
-        return 'e';
-
-      case 40:
-        return 's';
-
-      default:
-        console.log(e.keyCode);
-    }
+    console.log('direction clicked');
+    moveToNewRoom('n');
   };
 
-  // useKey(moveToNewRoom(handleKeyDown));
+  const handleSouth = (e, direction) => {
+    e.preventDefault();
+    console.log('direction clicked');
+    moveToNewRoom('s');
+  };
+
+  const handleEast = (e, direction) => {
+    e.preventDefault();
+    console.log('direction clicked');
+    moveToNewRoom('e');
+  };
+
+  const handleWest = (e, direction) => {
+    e.preventDefault();
+    console.log('direction clicked');
+    moveToNewRoom('w');
+  };
+
+  // // useKey(moveToNewRoom(handleKeyDown));
 
   // window.addEventListener('keydown', (e) => {
   //   moveToNewRoom(handleKeyDown(e));
@@ -122,6 +98,10 @@ function MainMap(key) {
             height: '40px',
           }}
         />
+        <button onClick={handleNorth}>North</button>
+        <button onClick={handleSouth}>South</button>
+        <button onClick={handleEast}>East</button>
+        <button onClick={handleWest}>West</button>
       </Main>
     </>
   );
