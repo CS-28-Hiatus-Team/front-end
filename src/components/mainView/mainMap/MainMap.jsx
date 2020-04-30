@@ -23,10 +23,17 @@ const Button = styled.button`
 
 function MainMap(key) {
   const { token } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.game);
   const actions = useContext(ActionsContext);
   const [playerPosition, setPlayerPosition] = useState({
     position: [360, 160],
   });
+
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     return <i class='nes-icon coin is-large'></i>;
+  //   }
+  // });
 
   const getNewPosition = (oldPos, direction) => {
     switch (direction) {
@@ -87,24 +94,32 @@ function MainMap(key) {
 
   return (
     <>
-      <Main>
-        <div
-          style={{
-            position: 'absolute',
-            top: playerPosition.position[1],
-            left: playerPosition.position[0],
-            backgroundImage: `url('${walkSprite}')`,
-            width: '40px',
-            height: '40px',
-          }}
-        />
-      </Main>
-      <ButtonContainer>
-        <Button onClick={handleNorth}>North</Button>
-        <Button onClick={handleSouth}>South</Button>
-        <Button onClick={handleEast}>East</Button>
-        <Button onClick={handleWest}>West</Button>
-      </ButtonContainer>
+      {isLoading === true ? (
+        <div className='nes-container is-rounded is-dark'>
+          <p>Traveling...</p>
+        </div>
+      ) : (
+        <>
+          <Main>
+            <div
+              style={{
+                position: 'absolute',
+                top: playerPosition.position[1],
+                left: playerPosition.position[0],
+                backgroundImage: `url('${walkSprite}')`,
+                width: '40px',
+                height: '40px',
+              }}
+            />
+          </Main>
+          <ButtonContainer>
+            <Button onClick={handleNorth}>North</Button>
+            <Button onClick={handleSouth}>South</Button>
+            <Button onClick={handleEast}>East</Button>
+            <Button onClick={handleWest}>West</Button>
+          </ButtonContainer>
+        </>
+      )}
     </>
   );
 }
