@@ -12,7 +12,6 @@ function MainView() {
     useEffect(()=> {
         if (token) {
             actions.game.init(token);
-            actions.game.move(token, 'n');
         }
     }, [token])
   return (
