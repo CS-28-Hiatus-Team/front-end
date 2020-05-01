@@ -11,7 +11,10 @@ export const usePlayerInitialize = () => {
         axios(token)
             .get('/api/adv/init/')
             .then(res => dispatch({type: types.INITIALIZE_PLAYER_SUCCESS, payload: res.data}))
-            .catch(err => dispatch({type: types.INITIALIZE_PLAYER_FAILURE, payload: err.response}))
+            .catch(err => {
+                console.log(err.response.data)
+                dispatch({type: types.INITIALIZE_PLAYER_FAILURE, payload: err.response})
+            })
     }, [dispatch])
 
     return [init]
