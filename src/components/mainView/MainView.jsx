@@ -8,15 +8,14 @@ import { useSelector } from 'react-redux';
 import { ActionsContext } from '../../contexts/ActionsContext';
 
 function MainView() {
-  const { token } = useSelector((state) => state.auth);
-  const actions = useContext(ActionsContext);
-  useEffect(() => {
-    if (token) {
-      actions.game.init(token);
-      actions.game.move(token, 'n');
-      actions.game.getRooms(token);
-    }
-  }, [token]);
+    const {token} = useSelector(state => state.auth);
+    const actions = useContext(ActionsContext);
+    useEffect(()=> {
+        if (token) {
+            actions.game.init(token);
+        }
+    }, [token])
+
   return (
     <MainContainer>
       <LeftContainer>
